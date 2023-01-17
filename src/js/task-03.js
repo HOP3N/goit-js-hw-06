@@ -15,8 +15,21 @@ const images = [
   },
 ];
 
-const galleryImages = document.querySelector('#gallery');
-galleryImages.insertAdjacentHTML(
-    'afterbegin',
-    `<li><img src = "${url}" alt = "${alt}"  width = "150" height = "100" /></li>`,
-  );
+const galleryListEl = document.querySelector(".gallery");
+
+const markUpEl = images
+  .map(
+    (image) => `<li><img src =${image.url} alt =${image.alt}  
+width = "300" height = "150" /></li>`
+  )
+  .join("");
+
+galleryListEl.insertAdjacentHTML("afterbegin", markUpEl);
+
+const picturesEl = document.querySelector(".picture");
+
+galleryListEl.style.display = "flex";
+galleryListEl.style.flexWrap = "wrap";
+galleryListEl.style.listStyle = "none";
+galleryListEl.style.gap = "20px";
+galleryListEl.style.justifyContent = "left";
